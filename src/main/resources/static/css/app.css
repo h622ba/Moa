@@ -1,0 +1,55 @@
+#header {
+	text-align: center;
+}
+
+.add {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.add-form {
+	width: 70%;
+	margin: auto;
+	text-align: center;
+}
+
+.update-form {
+	width: 70%;
+	margin: auto;
+	text-align: center;
+}
+
+.word-search {
+  text-align: center;
+}
+
+.search-check {
+	width: 60%;
+	margin: auto;
+}
+
+.list {
+	width: 60%;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.title {
+	font-size: 26px;
+}
+
+ul {
+ margin: 0; /*余白をリセット*/
+ padding: 0; /*余白をリセット*/
+ list-style-type: none; /*マーカーを削除*/
+ border-top: solid 1px #3dbfb8; /*枠線・上*/
+}
+ul li {
+ padding: 10px 20px; /*余白*/
+ background: #e3f6f5; /*背景色*/
+ border-bottom: solid 1px #3dbfb8; /*枠線・下*/
+}
+
+.add-submit-btn {
+	margin-top: 30px;
+}

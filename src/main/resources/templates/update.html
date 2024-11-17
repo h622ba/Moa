@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>案件修正</title>
+  <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<body>
+<h1 id="header">
+	<a href="/index">
+		<img src="/img/MOA-JAPAN-17.png" alt="titleimg" width="30%" height="130">
+	</a>
+</h1>
+<form class="update-form" th:action="@{/update}" method="post">
+	<div>
+		<label for="overview">概要</label>
+		<textarea id="overview" name="overview" rows="1" cols="60" th:text="${cases.overview}"></textarea>
+		</input>
+	</div>
+	<div>
+		<label for="detail">詳細</label>
+		<textarea id="detail" name="detail" rows="3" cols="60" th:text="${cases.detail}"></textarea>
+	</div>
+	<div>
+		<label for="ken">都道府県</label>
+		<select name="ken">
+			<option 
+			  th:value="'1'" 
+			  th:text="'北海道'" 
+			  th:selected="${cases.ken == 1}"
+			></option>
+			<option 
+			  th:value="'2'" 
+			  th:text="'青森県'" 
+			  th:selected="${cases.ken == 2}"
+			></option>
+			<option 
+			  th:value="'3'" 
+			  th:text="'岩手県'" 
+			  th:selected="${cases.ken == 3}"
+			></option>
+			<option 
+			  th:value="'4'" 
+			  th:text="'宮城県'" 
+			  th:selected="${cases.ken == 4}"
+			></option>
+			<option 
+			  th:value="'5'" 
+			  th:text="'秋田県'" 
+			  th:selected="${cases.ken == 5}"
+			></option>
+			<option 
+			  th:value="'6'" 
+			  th:text="'山形県'" 
+			  th:selected="${cases.ken == 6}"
+			></option>
+			<option 
+			  th:value="'7'" 
+			  th:text="'福島県'" 
+			  th:selected="${cases.ken == 7}"
+			></option>
+			<option 
+			  th:value="'8'" 
+			  th:text="'茨城県'" 
+			  th:selected="${cases.ken == 8}"
+			></option>
+			<option 
+			  th:value="'9'" 
+			  th:text="'栃木県'" 
+			  th:selected="${cases.ken == 9}"
+			></option>
+			<option 
+			  th:value="'10'" 
+			  th:text="'群馬県'" 
+			  th:selected="${cases.ken == 10}"
+			></option>
+			<option 
+			  th:value="'11'" 
+			  th:text="'埼玉県'" 
+			  th:selected="${cases.ken == 11}"
+			></option>
+			<option 
+			  th:value="'12'" 
+			  th:text="'千葉県'" 
+			  th:selected="${cases.ken == 12}"
+			></option>
+			<option 
+			  th:value="'13'" 
+			  th:text="'東京都'" 
+			  th:selected="${cases.ken == 13}"
+			></option>
+			<option 
+			  th:value="'14'" 
+			  th:text="'神奈川県'" 
+			  th:selected="${cases.ken == 14}"
+			></option>
+			<option 
+			  th:value="'15'" 
+			  th:text="'新潟県'" 
+			  th:selected="${cases.ken == 15}"
+			></option>
+			<option 
+			  th:value="'16'" 
+			  th:text="'富山県'" 
+			  th:selected="${cases.ken == 16}"
+			></option>
+			<option 
+			  th:value="'17'" 
+			  th:text="'石川県'" 
+			  th:selected="${cases.ken == 17}"
+			></option>
+			<option 
+			  th:value="'18'" 
+			  th:text="'福井県'" 
+			  th:selected="${cases.ken == 18}"
+			></option>
+			<option 
+			  th:value="'19'" 
+			  th:text="'山梨県'" 
+			  th:selected="${cases.ken == 19}"
+			></option>
+			<option 
+			  th:value="'20'" 
+			  th:text="'長野県'" 
+			  th:selected="${cases.ken == 20}"
+			></option>
+			<option 
+			  th:value="'21'" 
+			  th:text="'岐阜県'" 
+			  th:selected="${cases.ken == 21}"
+			></option>
+			<option 
+			  th:value="'22'" 
+			  th:text="'静岡県'" 
+			  th:selected="${cases.ken == 22}"
+			></option>
+			<option 
+			  th:value="'23'" 
+			  th:text="'愛知県'" 
+			  th:selected="${cases.ken == 23}"
+			></option>
+			<option 
+			  th:value="'24'" 
+			  th:text="'三重県'" 
+			  th:selected="${cases.ken == 24}"
+			></option>
+			<option 
+			  th:value="'25'" 
+			  th:text="'滋賀県'" 
+			  th:selected="${cases.ken == 25}"
+			></option>
+			<option 
+			  th:value="'26'" 
+			  th:text="'京都府'" 
+			  th:selected="${cases.ken == 26}"
+			></option>
+			<option 
+			  th:value="'27'" 
+			  th:text="'大阪府'" 
+			  th:selected="${cases.ken == 27}"
+			></option>
+			<option 
+			  th:value="'28'" 
+			  th:text="'兵庫県'" 
+			  th:selected="${cases.ken == 28}"
+			></option>
+			<option 
+			  th:value="'29'" 
+			  th:text="'奈良県'" 
+			  th:selected="${cases.ken == 29}"
+			></option>
+			<option 
+			  th:value="'30'" 
+			  th:text="'和歌山県'" 
+			  th:selected="${cases.ken == 30}"
+			></option>
+			<option 
+			  th:value="'31'" 
+			  th:text="'鳥取県'" 
+			  th:selected="${cases.ken == 31}"
+			></option>
+			<option 
+			  th:value="'32'" 
+			  th:text="'島根県'" 
+			  th:selected="${cases.ken == 32}"
+			></option>
+			<option 
+			  th:value="'33'" 
+			  th:text="'岡山県'" 
+			  th:selected="${cases.ken == 33}"
+			></option>
+			<option 
+			  th:value="'34'" 
+			  th:text="'広島県'" 
+			  th:selected="${cases.ken == 34}"
+			></option>
+			<option 
+			  th:value="'35'" 
+			  th:text="'山口県'" 
+			  th:selected="${cases.ken == 35}"
+			></option>
+			<option 
+			  th:value="'36'" 
+			  th:text="'徳島県'" 
+			  th:selected="${cases.ken == 36}"
+			></option>
+			<option 
+			  th:value="'37'" 
+			  th:text="'香川県'" 
+			  th:selected="${cases.ken == 37}"
+			></option>
+			<option 
+			  th:value="'38'" 
+			  th:text="'愛媛県'" 
+			  th:selected="${cases.ken == 38}"
+			></option>
+			<option 
+			  th:value="'39'" 
+			  th:text="'高知県'" 
+			  th:selected="${cases.ken == 39}"
+			></option>
+			<option 
+			  th:value="'40'" 
+			  th:text="'福岡県'" 
+			  th:selected="${cases.ken == 40}"
+			></option>
+			<option 
+			  th:value="'41'" 
+			  th:text="'佐賀県'" 
+			  th:selected="${cases.ken == 41}"
+			></option>
+			<option 
+			  th:value="'42'" 
+			  th:text="'長崎県'" 
+			  th:selected="${cases.ken == 42}"
+			></option>
+			<option 
+			  th:value="'43'" 
+			  th:text="'熊本県'" 
+			  th:selected="${cases.ken == 43}"
+			></option>
+			<option 
+			  th:value="'44'" 
+			  th:text="'大分県'" 
+			  th:selected="${cases.ken == 44}"
+			></option>
+			<option 
+			  th:value="'45'" 
+			  th:text="'宮崎県'" 
+			  th:selected="${cases.ken == 45}"
+			></option>
+			<option 
+			  th:value="'46'" 
+			  th:text="'鹿児島県'" 
+			  th:selected="${cases.ken == 46}"
+			></option>
+			<option 
+			  th:value="'47'" 
+			  th:text="'沖縄県'" 
+			  th:selected="${cases.ken == 47}"
+			></option>
+			<option 
+			  th:value="'48'" 
+			  th:text="'フルリモート'" 
+			  th:selected="${cases.ken == 48}"
+			></option>		
+		</select>
+	</div>
+	<div>
+		<label for="occupation">職種</label>
+		<select name="occupation">
+			<option 
+				th:value="'1'" 
+				th:text="'接客'" 
+				th:selected="${cases.occupation == 1}"
+			></option>
+			<option 
+				th:value="'2'" 
+				th:text="'コールセンター'" 
+				th:selected="${cases.occupation == 2}"
+			></option>
+			<option 
+				th:value="'3'" 
+				th:text="'営業'" 
+				th:selected="${cases.occupation == 3}"
+			></option>
+			<option 
+				th:value="'4'" 
+				th:text="'事務'" 
+				th:selected="${cases.occupation == 4}"
+			></option>
+			<option 
+				th:value="'5'" 
+				th:text="'SE'" 
+				th:selected="${cases.occupation == 5}"
+			></option>
+		</select>
+	<div>
+		<label for="industry">業界</label>
+		<select name="industry">
+			<option 
+				th:value="'1'" 
+				th:text="'通信'" 
+				th:selected="${cases.industry == 1}"
+			></option>
+			<option 
+				th:value="'2'" 
+				th:text="'IT'" 
+				th:selected="${cases.industry == 2}"
+			></option>
+		</select>
+	</div>
+	<div>
+		<label for="price">単価</label>
+		<input class="form-control" type="text" id="price" name="price" th:value="${cases.price}" />
+	</div>
+	<div>
+		<label for="startdate">開始日</label>
+		<input class="form-control" type="text" id="startdate" name="startdate" th:value="${cases.startdate}"/>
+	</div>
+	<div>
+		<label for="workingdays">稼働日数</label>
+		<input class="form-control" type="text" id="workingdays" name="workingdays" th:value="${cases.workingdays}"/>
+	</div>
+	<div class="update-submit-btn">
+		<input type="hidden" th:value="${cases.id}" id="case_id" name="case_id" />
+		<button type="submit">修正する</button>
+	</div>
+</form>
+</body>
+</html>

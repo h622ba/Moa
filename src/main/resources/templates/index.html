@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>案件一覧</title>
+  <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>案件一覧</title>
+</head>
+<body>
+<h1 id="header">
+	<a href="/index">
+		<img src="/img/MOA-JAPAN-17.png" alt="titleimg" width="30%" height="130">
+	</a>
+</h1>
+<form th:action="@{/add}" method="get" class="add">
+	<button class="add-btn" type="submit">案件登録</button>
+</form>
+<form th:action="@{/index/search}" method="get" class="search">
+	<div class="word-search">
+		<input type="text" id="words" name="words" class="form-control" />
+		<button class="btn btn-primary" type="submit">検索</button>
+	</div>
+	<div class="search-check">
+		<p>勤務地</p>
+		<input type="checkbox" name="ken" value="1">北海道
+		<input type="checkbox" name="ken" value="2">青森県
+		<input type="checkbox" name="ken" value="3">岩手県
+		<input type="checkbox" name="ken" value="4">宮城県
+		<input type="checkbox" name="ken" value="5">秋田県
+		<input type="checkbox" name="ken" value="6">山形県
+		<input type="checkbox" name="ken" value="7">福島県
+		<input type="checkbox" name="ken" value="8">茨城県
+		<input type="checkbox" name="ken" value="9">栃木県
+		<input type="checkbox" name="ken" value="10">群馬県
+		<input type="checkbox" name="ken" value="11">埼玉県<br>
+		<input type="checkbox" name="ken" value="12">千葉県
+		<input type="checkbox" name="ken" value="13">東京都
+		<input type="checkbox" name="ken" value="14">神奈川県
+		<input type="checkbox" name="ken" value="15">新潟県
+		<input type="checkbox" name="ken" value="16">富山県
+		<input type="checkbox" name="ken" value="17">石川県
+		<input type="checkbox" name="ken" value="18">福井県
+		<input type="checkbox" name="ken" value="19">山梨県
+		<input type="checkbox" name="ken" value="20">長野県
+		<input type="checkbox" name="ken" value="21">岐阜県
+		<input type="checkbox" name="ken" value="22">静岡県<br>
+		<input type="checkbox" name="ken" value="23">愛知県
+		<input type="checkbox" name="ken" value="24">三重県
+		<input type="checkbox" name="ken" value="25">滋賀県
+		<input type="checkbox" name="ken" value="26">京都府
+		<input type="checkbox" name="ken" value="27">大阪府
+		<input type="checkbox" name="ken" value="28">兵庫県
+		<input type="checkbox" name="ken" value="29">奈良県
+		<input type="checkbox" name="ken" value="30">和歌山県
+		<input type="checkbox" name="ken" value="31">鳥取県
+		<input type="checkbox" name="ken" value="32">島根県
+		<input type="checkbox" name="ken" value="33">岡山県<br>
+		<input type="checkbox" name="ken" value="34">広島県
+		<input type="checkbox" name="ken" value="35">山口県
+		<input type="checkbox" name="ken" value="36">徳島県
+		<input type="checkbox" name="ken" value="37">香川県
+		<input type="checkbox" name="ken" value="38">愛媛県
+		<input type="checkbox" name="ken" value="39">高知県
+		<input type="checkbox" name="ken" value="40">福岡県
+		<input type="checkbox" name="ken" value="41">佐賀県
+		<input type="checkbox" name="ken" value="42">長崎県
+		<input type="checkbox" name="ken" value="43">熊本県
+		<input type="checkbox" name="ken" value="44">大分県<br>
+		<input type="checkbox" name="ken" value="45">宮崎県
+		<input type="checkbox" name="ken" value="46">鹿児島県
+		<input type="checkbox" name="ken" value="47">沖縄県
+		<input type="checkbox" name="ken" value="48">フルリモート
+	</div>
+	<div class="search-check">
+		<p>職種</p>
+		<input type="checkbox" name="occupation" value="1">接客
+		<input type="checkbox" name="occupation" value="2">コールセンター
+		<input type="checkbox" name="occupation" value="3">営業
+		<input type="checkbox" name="occupation" value="4">事務
+		<input type="checkbox" name="occupation" value="5">SE
+	</div>
+	<div class="search-check">
+		<p>業界</p>
+		<input type="checkbox" name="industry" value="1">通信
+		<input type="checkbox" name="industry" value="2">IT
+	</div>
+	<div class="search-check">
+		<p>単価</p>
+		<input type="radio" name="price" value="28" checked>28万円〜
+		<input type="radio" name="price" value="30">30万円〜
+		<input type="radio" name="price" value="32">32万円〜
+		<input type="radio" name="price" value="34">34万円〜
+		<input type="radio" name="price" value="36">36万円〜
+		<input type="radio" name="price" value="38">38万円〜
+		<input type="radio" name="price" value="40">40万円〜
+		<input type="radio" name="price" value="42">42万円〜
+		<input type="radio" name="price" value="44">44万円〜
+		<input type="radio" name="price" value="46">46万円〜
+		<input type="radio" name="price" value="48">48万円〜
+		<input type="radio" name="price" value="50">50万円〜
+	</div>
+	<div class="search-check">
+		<p>その他</p>
+		<input type="checkbox" name="inexperienced" value="inexperienced">未経験可
+		<input type="checkbox" name="holiday" value="holiday">土日祝休み
+	</div>
+</form>
+<ul class="list" th:each="case : ${cases}">
+	<li class="title" th:text="${case.overview}"></li>
+	<div th:switch="${case.ken}">
+		<li th:case="1">勤務地：北海道</li>
+		<li th:case="2">勤務地：青森県</li>
+		<li th:case="3">勤務地：岩手県</li>
+		<li th:case="4">勤務地：宮城県</li>
+		<li th:case="5">勤務地：秋田県</li>
+		<li th:case="6">勤務地：山形県</li>
+		<li th:case="7">勤務地：福島県</li>
+		<li th:case="8">勤務地：茨城県</li>
+		<li th:case="9">勤務地：栃木県</li>
+		<li th:case="10">勤務地：群馬県</li>
+		<li th:case="11">勤務地：埼玉県</li>
+		<li th:case="12">勤務地：千葉県</li>
+		<li th:case="13">勤務地：東京都</li>
+		<li th:case="14">勤務地：神奈川県</li>
+		<li th:case="15">勤務地：新潟県</li>
+		<li th:case="16">勤務地：富山県</li>
+		<li th:case="17">勤務地：石川県</li>
+		<li th:case="18">勤務地：福井県</li>
+		<li th:case="19">勤務地：山梨県</li>
+		<li th:case="20">勤務地：長野県</li>
+		<li th:case="21">勤務地：岐阜県</li>
+		<li th:case="22">勤務地：静岡県</li>
+		<li th:case="23">勤務地：愛知県</li>
+		<li th:case="24">勤務地：三重県</li>
+		<li th:case="25">勤務地：滋賀県</li>
+		<li th:case="26">勤務地：京都府</li>
+		<li th:case="27">勤務地：大阪府</li>
+		<li th:case="28">勤務地：兵庫県</li>
+		<li th:case="29">勤務地：奈良県</li>
+		<li th:case="30">勤務地：和歌山県</li>
+		<li th:case="31">勤務地：鳥取県</li>
+		<li th:case="32">勤務地：島根県</li>
+		<li th:case="33">勤務地：岡山県</li>
+		<li th:case="34">勤務地：広島県</li>
+		<li th:case="35">勤務地：山口県</li>
+		<li th:case="36">勤務地：徳島県</li>
+		<li th:case="37">勤務地：香川県</li>
+		<li th:case="38">勤務地：愛媛県</li>
+		<li th:case="39">勤務地：高知県</li>
+		<li th:case="40">勤務地：福岡県</li>
+		<li th:case="41">勤務地：佐賀県</li>
+		<li th:case="42">勤務地：長崎県</li>
+		<li th:case="43">勤務地：熊本県</li>
+		<li th:case="44">勤務地：大分県</li>
+		<li th:case="45">勤務地：宮崎県</li>
+		<li th:case="46">勤務地：鹿児島県</li>
+		<li th:case="47">勤務地：沖縄県</li>
+		<li th:case="48">勤務地：フルリモート</li>
+		<li th:case="*">不明</li>
+	</div>
+	<div th:switch="${case.occupation}">
+		<li th:case="1">職種：接客</li>
+		<li th:case="2">職種：コールセンター</li>
+		<li th:case="3">職種：営業</li>
+		<li th:case="4">職種：事務</li>
+		<li th:case="5">職種：SE</li>
+	</div>
+	<div th:switch="${case.industry}">
+		<li th:case="1">業界：通信</li>
+		<li th:case="2">業界：IT</li>
+	</div>
+	<li th:text="'単価：' + ${case.price}"></li>
+	<li th:text="'開始日：' + ${case.startdate}"></li>
+	<li th:text="'稼働日数：' + ${case.workingdays}"></li>
+	<li th:text="${case.detail}"></li>
+	<li>
+		<form th:action="@{/delete}" method="post">
+			<input type="hidden" th:value="${case.id}" id="case_id" name="case_id" />
+			<button class="del-btn" type="submit">削除</button>
+		</form>
+		<form th:action="@{/update}" method="get">
+			<input type="hidden" th:value="${case.id}" id="case_id" name="case_id" />
+			<button class="update-btn" type="submit">変更</button>
+		</form>
+	</li>
+</ul>
+</body>
+</html>

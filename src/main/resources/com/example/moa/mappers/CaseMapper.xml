@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.moa.mappers.CaseMapper">
+    <!-- 結果と結果を受け取るクラスの紐づけ -->
+    <resultMap id="caseResultMap" type="com.example.moa.model.Case">
+      <result property="id" column="id" />
+      <result property="ken" column="ken"/>
+      <result property="occupation" column="occupation"/>
+      <result property="industry" column="industry"/>
+      <result property="price" column="price"/>
+      <result property="startdate" column="startdate"/>
+      <result property="workingdays" column="workingdays"/>
+      <result property="overview" column="overview"/>
+      <result property="detail" column="detail"/>
+    </resultMap>
+    <!-- SQL -->
+	<select id="all" resultMap="caseResultMap">
+        SELECT * FROM cases;
+    </select>
+    <select id="search" resultMap="caseResultMap" parameterType="com.example.moa.model.Case">
+        SELECT
+        	*
+        FROM
+        	cases
+        WHERE
+        	id IS NOT NULL
+        	<if test="ken != 0">
+            AND ken = (#{ken})
+            </if>
+        	<if test="occupation != 0">
+        	AND occupation = (#{occupation})
+            </if>
+        	<if test="industry != 0">
+        	AND industry = (#{industry})
+        	</if>
+			AND ( overview LIKE '%' || #{words} || '%' or detail LIKE '%' || #{words} || '%');
+    </select>
+    <insert id="insert" parameterType="com.example.moa.model.Case">
+        INSERT INTO cases(ken, occupation, industry, price, startdate, workingdays, overview, detail)
+        VALUES (#{ken}, #{occupation}, #{industry}, #{price}, #{startdate}, #{workingdays}, #{overview}, #{detail});
+    </insert>
+    <delete id="delete" parameterType="com.example.moa.model.Case">
+    	DELETE FROM cases WHERE id = #{id};
+    </delete>
+    <select id="upSearch" resultMap="caseResultMap" parameterType="com.example.moa.model.Case">
+    	SELECT * FROM cases WHERE id = #{id};
+    </select>
+    <update id="update" parameterType="com.example.moa.model.Case">
+    	UPDATE cases
+    	SET ken = (#{ken}),
+    	occupation = (#{occupation}),
+    	industry = (#{industry}),
+    	price = (#{price}),
+    	startdate = (#{startdate}),
+    	workingdays = (#{workingdays}),
+    	overview = (#{overview}),
+    	detail = (#{detail})
+    	WHERE id = (#{id});
+    </update>
+</mapper>
