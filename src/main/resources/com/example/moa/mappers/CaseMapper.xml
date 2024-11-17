@@ -7,7 +7,8 @@
       <result property="ken" column="ken"/>
       <result property="occupation" column="occupation"/>
       <result property="industry" column="industry"/>
-      <result property="price" column="price"/>
+      <result property="lowprice" column="lowprice"/>
+      <result property="highprice" column="highprice"/>
       <result property="startdate" column="startdate"/>
       <result property="workingdays" column="workingdays"/>
       <result property="overview" column="overview"/>
@@ -33,11 +34,14 @@
         	<if test="industry != 0">
         	AND industry = (#{industry})
         	</if>
+        	<if test="price != 0">
+        	AND highprice >= (#{price})
+        	</if>
 			AND ( overview LIKE '%' || #{words} || '%' or detail LIKE '%' || #{words} || '%');
     </select>
     <insert id="insert" parameterType="com.example.moa.model.Case">
-        INSERT INTO cases(ken, occupation, industry, price, startdate, workingdays, overview, detail)
-        VALUES (#{ken}, #{occupation}, #{industry}, #{price}, #{startdate}, #{workingdays}, #{overview}, #{detail});
+        INSERT INTO cases(ken, occupation, industry, lowprice, highprice, startdate, workingdays, overview, detail)
+        VALUES (#{ken}, #{occupation}, #{industry}, #{lowprice}, #{highprice}, #{startdate}, #{workingdays}, #{overview}, #{detail});
     </insert>
     <delete id="delete" parameterType="com.example.moa.model.Case">
     	DELETE FROM cases WHERE id = #{id};
@@ -50,7 +54,8 @@
     	SET ken = (#{ken}),
     	occupation = (#{occupation}),
     	industry = (#{industry}),
-    	price = (#{price}),
+    	lowprice = (#{lowprice}),
+    	highprice = (#{highprice}),
     	startdate = (#{startdate}),
     	workingdays = (#{workingdays}),
     	overview = (#{overview}),

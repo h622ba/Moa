@@ -6,7 +6,9 @@ public class Case {
 	private int ken;
 	private int occupation;
     private int industry;
-	private String price;
+	private int price;
+	private int lowprice;
+	private int highprice;
 	private String startdate;
 	private String workingdays;
 	private String overview;
@@ -17,7 +19,7 @@ public class Case {
 		this.id = id;
 	}
 	
-	public Case(String words, int ken, int occupation, int industry, String price) {
+	public Case(String words, int ken, int occupation, int industry, int price) {
 		this.words = words;
 		this.ken = ken;
 		this.occupation = occupation;
@@ -25,23 +27,25 @@ public class Case {
 		this.price = price;
 	}
 	
-	public Case(int ken, int occupation, int industry, String price, String startdate, String workingdays, String overview, String detail) {
+	public Case(int ken, int occupation, int industry, int lowprice, int highprice, String startdate, String workingdays, String overview, String detail) {
 		this.ken = ken;
 		this.occupation = occupation;
 		this.industry = industry;
-		this.price = price;
+		this.lowprice = lowprice;
+		this.highprice = highprice;
 		this.startdate = startdate;
 		this.workingdays = workingdays;
 		this.overview = overview;
 		this.detail = detail;
 	}
 	
-	public Case(int id, int ken, int occupation, int industry, String price, String startdate, String workingdays, String overview, String detail) {
+	public Case(int id, int ken, int occupation, int industry, int lowprice, int highprice, String startdate, String workingdays, String overview, String detail) {
 		this.id = id;
 		this.ken = ken;
 		this.occupation = occupation;
 		this.industry = industry;
-		this.price = price;
+		this.lowprice = lowprice;
+		this.highprice = highprice;
 		this.startdate = startdate;
 		this.workingdays = workingdays;
 		this.overview = overview;
@@ -80,12 +84,28 @@ public class Case {
 		this.industry = industry;
 	}
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-
-	public void setPrice(String price) {
+	
+	public void setPrice(int price) {
 		this.price = price;
+	}
+	
+	public int getLowprice() {
+		return lowprice;
+	}
+
+	public void setLowprice(int lowprice) {
+		this.lowprice = lowprice;
+	}
+	
+	public int getHighprice() {
+		return highprice;
+	}
+	
+	public void setHighprice(int highprice) {
+		this.highprice = highprice;
 	}
 
 	public String getStartdate() {

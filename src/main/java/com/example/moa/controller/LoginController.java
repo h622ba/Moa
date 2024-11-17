@@ -54,7 +54,7 @@ public class LoginController {
     							@RequestParam(name = "ken", defaultValue = "0") int ken,
     							@RequestParam(name = "occupation", defaultValue = "0") int occupation,
     							@RequestParam(name = "industry", defaultValue = "0") int industry,
-    							@RequestParam(name = "price", defaultValue = "") String price) {
+    							@RequestParam(name = "price", defaultValue = "0") int price) {
     	Case cases = new Case(words, ken, occupation, industry, price);
     	List<Case> cases1 = service.selectSearch(cases);
         model.addAttribute("cases", cases1);
@@ -70,12 +70,13 @@ public class LoginController {
 	public String add(@RequestParam("ken") int ken,
 						@RequestParam("occupation") int occupation,
 						@RequestParam("industry") int industry,
-						@RequestParam("price") String price,
+						@RequestParam("lowprice") int lowprice,
+						@RequestParam("highprice") int highprice,
 						@RequestParam("startdate") String startdate,
 						@RequestParam("workingdays") String workingdays,
 						@RequestParam("overview") String overview, 
 						@RequestParam("detail") String detail) {
-		Case cases = new Case(ken, occupation, industry, price, startdate, workingdays, overview, detail);
+		Case cases = new Case(ken, occupation, industry, lowprice, highprice, startdate, workingdays, overview, detail);
 		service.add(cases);
 		return "redirect:/";
 	}
@@ -100,12 +101,13 @@ public class LoginController {
 			@RequestParam("ken") int ken,
 			@RequestParam("occupation") int occupation,
 			@RequestParam("industry") int industry,
-			@RequestParam("price") String price,
+			@RequestParam("lowprice") int lowprice,
+			@RequestParam("highprice") int highprice,
 			@RequestParam("startdate") String startdate,
 			@RequestParam("workingdays") String workingdays,
 			@RequestParam("overview") String overview, 
 			@RequestParam("detail") String detail) {
-		Case cases = new Case(id, ken, occupation, industry, price, startdate, workingdays, overview, detail);
+		Case cases = new Case(id, ken, occupation, industry, lowprice, highprice, startdate, workingdays, overview, detail);
 		service.up(cases);
 		return "redirect:/";
 	}

@@ -92,18 +92,18 @@
 	</div>
 	<div class="search-check">
 		<p>単価</p>
-		<input type="radio" name="price" value="28" checked>28万円〜
-		<input type="radio" name="price" value="30">30万円〜
-		<input type="radio" name="price" value="32">32万円〜
-		<input type="radio" name="price" value="34">34万円〜
-		<input type="radio" name="price" value="36">36万円〜
-		<input type="radio" name="price" value="38">38万円〜
-		<input type="radio" name="price" value="40">40万円〜
-		<input type="radio" name="price" value="42">42万円〜
-		<input type="radio" name="price" value="44">44万円〜
-		<input type="radio" name="price" value="46">46万円〜
-		<input type="radio" name="price" value="48">48万円〜
-		<input type="radio" name="price" value="50">50万円〜
+		<input type="radio" name="price" value="280000" checked>28万円〜
+		<input type="radio" name="price" value="300000">30万円〜
+		<input type="radio" name="price" value="320000">32万円〜
+		<input type="radio" name="price" value="340000">34万円〜
+		<input type="radio" name="price" value="360000">36万円〜
+		<input type="radio" name="price" value="380000">38万円〜
+		<input type="radio" name="price" value="400000">40万円〜
+		<input type="radio" name="price" value="420000">42万円〜
+		<input type="radio" name="price" value="440000">44万円〜
+		<input type="radio" name="price" value="460000">46万円〜
+		<input type="radio" name="price" value="480000">48万円〜
+		<input type="radio" name="price" value="500000">50万円〜
 	</div>
 	<div class="search-check">
 		<p>その他</p>
@@ -175,7 +175,7 @@
 		<li th:case="1">業界：通信</li>
 		<li th:case="2">業界：IT</li>
 	</div>
-	<li th:text="'単価：' + ${case.price}"></li>
+	<li th:text="'単価：' + ${case.lowprice} + '〜' + ${case.highprice} + ' 万円/月'"></li>
 	<li th:text="'開始日：' + ${case.startdate}"></li>
 	<li th:text="'稼働日数：' + ${case.workingdays}"></li>
 	<li th:text="${case.detail}"></li>

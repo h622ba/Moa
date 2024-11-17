@@ -313,8 +313,12 @@
 		</select>
 	</div>
 	<div>
-		<label for="price">単価</label>
-		<input class="form-control" type="text" id="price" name="price" th:value="${cases.price}" />
+		<label for="price">最低単価</label>
+		<input class="form-control" type="text" id="lowprice" name="lowprice" th:value="${cases.price}" />
+	</div>
+	<div>
+		<label for="price">最高単価</label>
+		<input class="form-control" type="text" id="highprice" name="highprice" th:value="${cases.price}" />
 	</div>
 	<div>
 		<label for="startdate">開始日</label>
