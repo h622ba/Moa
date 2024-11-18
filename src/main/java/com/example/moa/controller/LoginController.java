@@ -45,6 +45,10 @@ public class LoginController {
     @GetMapping("/index") // "/index"というURLに対するGETリクエストを処理します
     public String index(Model model) {
     	List<Case> cases = service.selectAll();
+    	for(int i = 0; i < cases.size(); i++)
+    	{
+    		cases.get(i).setDetail(cases.get(i).getDetail().replace("\r", "<br>"));
+    	}
         model.addAttribute("cases", cases);
         return "index"; // index.htmlを表示します
     }
@@ -54,9 +58,15 @@ public class LoginController {
     							@RequestParam(name = "ken", defaultValue = "0") int ken,
     							@RequestParam(name = "occupation", defaultValue = "0") int occupation,
     							@RequestParam(name = "industry", defaultValue = "0") int industry,
-    							@RequestParam(name = "price", defaultValue = "0") int price) {
-    	Case cases = new Case(words, ken, occupation, industry, price);
+    							@RequestParam(name = "price", defaultValue = "0") int price,
+    							@RequestParam(name = "inexperienced", defaultValue = "") String inexperienced,
+    							@RequestParam(name = "holiday", defaultValue = "") String holiday) {
+    	Case cases = new Case(words, ken, occupation, industry, price, inexperienced, holiday);
     	List<Case> cases1 = service.selectSearch(cases);
+    	for(int i = 0; i < cases1.size(); i++)
+    	{
+    		cases1.get(i).setDetail(cases1.get(i).getDetail().replace("\r", "<br>"));
+    	}
         model.addAttribute("cases", cases1);
         return "index"; // index.htmlを表示します
     }

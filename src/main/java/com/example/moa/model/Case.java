@@ -14,17 +14,41 @@ public class Case {
 	private String overview;
 	private String detail;
 	private String words;
+	private String inexperienced;
+	private String holiday;
+
+	public String getInexperienced() {
+		return inexperienced;
+	}
+
+	public void setInexperienced(String inexperienced) {
+		this.inexperienced = inexperienced;
+	}
+
+	public String getHoliday() {
+		return holiday;
+	}
+
+	public void setHoliday(String holiday) {
+		this.holiday = holiday;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Case(int id) {
 		this.id = id;
 	}
 	
-	public Case(String words, int ken, int occupation, int industry, int price) {
+	public Case(String words, int ken, int occupation, int industry, int price, String inexperienced, String holiday) {
 		this.words = words;
 		this.ken = ken;
 		this.occupation = occupation;
 		this.industry = industry;
 		this.price = price;
+		this.inexperienced = inexperienced;
+		this.holiday = holiday;
 	}
 	
 	public Case(int ken, int occupation, int industry, int lowprice, int highprice, String startdate, String workingdays, String overview, String detail) {

@@ -37,7 +37,9 @@
         	<if test="price != 0">
         	AND highprice >= (#{price})
         	</if>
-			AND ( overview LIKE '%' || #{words} || '%' or detail LIKE '%' || #{words} || '%');
+			AND ( overview LIKE '%' || #{words} || '%' or detail LIKE '%' || #{words} || '%')
+			AND ( overview LIKE '%' || #{inexperienced} || '%' or detail LIKE '%' || #{inexperienced} || '%')
+			AND ( overview LIKE '%' || #{holiday} || '%' or detail LIKE '%' || #{holiday} || '%');
     </select>
     <insert id="insert" parameterType="com.example.moa.model.Case">
         INSERT INTO cases(ken, occupation, industry, lowprice, highprice, startdate, workingdays, overview, detail)

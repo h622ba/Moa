@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>案件一覧</title>
   <link th:href="@{/css/app.css}" rel="stylesheet">
+  <script th:src="@{/js/app.js}"></script>
 </head>
 <html>
 <head>
@@ -107,8 +108,8 @@
 	</div>
 	<div class="search-check">
 		<p>その他</p>
-		<input type="checkbox" name="inexperienced" value="inexperienced">未経験可
-		<input type="checkbox" name="holiday" value="holiday">土日祝休み
+		<input type="checkbox" id="inexperienced" name="inexperienced" value="未経験">未経験可
+		<input type="checkbox" id="holiday" name="holiday" value="土日祝休み">土日祝休み
 	</div>
 </form>
 <ul class="list" th:each="case : ${cases}">
@@ -178,16 +179,18 @@
 	<li th:text="'単価：' + ${case.lowprice} + '〜' + ${case.highprice} + ' 万円/月'"></li>
 	<li th:text="'開始日：' + ${case.startdate}"></li>
 	<li th:text="'稼働日数：' + ${case.workingdays}"></li>
-	<li th:text="${case.detail}"></li>
-	<li>
-		<form th:action="@{/delete}" method="post">
-			<input type="hidden" th:value="${case.id}" id="case_id" name="case_id" />
-			<button class="del-btn" type="submit">削除</button>
-		</form>
+	<li th:utext="${case.detail}"></li>
+	<li class="li-btn">
+		<div class="btn-li">
 		<form th:action="@{/update}" method="get">
 			<input type="hidden" th:value="${case.id}" id="case_id" name="case_id" />
 			<button class="update-btn" type="submit">変更</button>
 		</form>
+		<form th:action="@{/delete}" method="post">
+			<input type="hidden" th:value="${case.id}" id="case_id" name="case_id" />
+			<button class="del-btn" type="submit">削除</button>
+		</form>
+		</div>
 	</li>
 </ul>
 </body>

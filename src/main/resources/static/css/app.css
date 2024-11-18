@@ -53,3 +53,12 @@ ul li {
 .add-submit-btn {
 	margin-top: 30px;
 }
+
+.btn-li {
+	display: flex;
+	margin-left: 85%;
+}
+
+.btn-li button {
+	margin-left: 10px;
+} 
