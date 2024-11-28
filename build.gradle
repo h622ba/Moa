@@ -45,11 +45,6 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-dependencies {
-    // 他の依存関係の設定
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-}
-
 tasks.withType(GroovyCompile).configureEach {
 	groovyOptions.parameters = true
 }
