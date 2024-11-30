@@ -17,4 +17,4 @@ FROM openjdk:23
 WORKDIR /app
 #COPY --from=build /home/gradle/src/build/libs/docker-0.0.1-SNAPSHOT.jar moa.jar
 COPY --from=build /home/gradle/src/build/libs/moa-0.0.1-SNAPSHOT.jar moa.jar
-ENTRYPOINT ["java","-jar","/moa.jar"]
+ENTRYPOINT ["java","-jar","moa.jar"]
